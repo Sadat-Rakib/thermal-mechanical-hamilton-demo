@@ -1,0 +1,34 @@
+name: Deploy client websites to Cloudflare
+on:
+  push:
+    branches: ["codex/demo"]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cloudflare-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - project: thermal-mechanical-hamilton
+            command: pages deploy cf-dist --project-name thermal-mechanical-hamilton --branch codex/demo
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare preserved static assets
+        run: node .cloudflare/prepare.cjs ${{ matrix.project }}
+      - name: Deploy to Cloudflare
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: '325a4e03343ac8e3ab542ee08a397fb4'
+          wranglerVersion: '4.151.3'
+          command: ${{ matrix.command }}
