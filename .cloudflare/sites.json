@@ -1,6 +1,6 @@
 [
   {
-    "project": "thermal-mechanical-hamilton",
+    "project": "thermal-mechanical-hamilton-website",
     "source": ".",
     "worker": false,
     "files": [

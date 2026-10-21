@@ -16,8 +16,8 @@ jobs:
       max-parallel: 3
       matrix:
         include:
-          - project: thermal-mechanical-hamilton
-            command: pages deploy cf-dist --project-name thermal-mechanical-hamilton --branch codex/demo
+          - project: thermal-mechanical-hamilton-website
+            command: pages deploy cf-dist --project-name thermal-mechanical-hamilton-website --branch codex/demo
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
@@ -29,6 +29,6 @@ jobs:
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: '325a4e03343ac8e3ab542ee08a397fb4'
+          accountId: '92b5efad73f58d59af5a0c0c2a5f9373'
           wranglerVersion: '4.151.3'
           command: ${{ matrix.command }}
