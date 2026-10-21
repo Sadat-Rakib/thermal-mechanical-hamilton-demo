@@ -14,8 +14,12 @@ Phone from source report: 289-828-4818. Email from source report: thermal.mechan
 
 ## Hosting
 
-Dedicated GitHub repository and Vercel project; npm run build -> dist. No secrets or paid services. Demo robots metadata requests noindex/nofollow.
+Dedicated GitHub repository; Vercel-ready configuration; npm run build -> dist. No secrets or paid services. Demo robots metadata requests noindex/nofollow.
 
 ## Assets
 
 See CREDITS.md. Responsive 800px and 1600px WebP, lazy loading outside the hero, reduced-motion support.
+
+## Current public preview hosting
+
+Vercel project creation was blocked by the team's 200-project Hobby limit. This concept is public on Sites: https://thermal-mechanical-hamilton-demo.saltytoad13.chatgpt.site. The .openai/hosting.json identity is retained for updates. The dedicated Vercel project can be created when capacity becomes available.
